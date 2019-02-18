@@ -30,7 +30,10 @@
 #include "arch.h"
 
 #ifdef _ULCC_LIB
+// default: 用它定义的符号将被导出，动态库中的函数默认是可见的。
 #define _ULCC_EXPORT	__attribute__ ((visibility ("default")))
+// hidden: 用它定义的符号将不被导出，并且不能从其它对象进行使用，动态库中的函数默认是被隐藏的。
+// 实际上，隐藏的符号将不会出现在动态符号表中，但是还被留在符号表中用于静态链接。
 #define _ULCC_HIDDEN	__attribute__ ((visibility ("hidden")))
 #else
 #define _ULCC_EXPORT
