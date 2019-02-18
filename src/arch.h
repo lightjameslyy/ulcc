@@ -34,9 +34,9 @@
  * initializer. */
 
 /* Last level cache size in KiB */
-#define ULCC_CACHE_KB				(6 * 1024/* TODO: fill here */)
+#define ULCC_CACHE_KB				(24 * 1024/* TODO: fill here */)
 /* Last level cache associativity */
-#define ULCC_CACHE_ASSOC			(48/* TODO: fill here */)
+#define ULCC_CACHE_ASSOC			(24/* TODO: fill here */)
 
 /* Number of bits for the size of a memory page: 4KiB should be pretty standard */
 #define ULCC_PAGE_BITS				12
@@ -48,9 +48,11 @@
 #define ULCC_PAGE_KB			(ULCC_PAGE_BYTES / 1024)
 #define ULCC_PAGE_OFFSET_MASK	(((unsigned long)1 << ULCC_PAGE_BITS) - 1)
 #define ULCC_PAGE_IDX_MASK		(~ULCC_PAGE_OFFSET_MASK)
+// 获取addr所在页的页号
 #define ULCC_PAGE_NBR(addr)		(((unsigned long)(addr)) >> ULCC_PAGE_BITS)
 
 /* Number of cache colors */
+// 从这里的定义可以知道：一个color的大小为：ULCC_CACHE_ASSOC * ULCC_PAGE_KB
 #define ULCC_NR_CACHE_COLORS	(ULCC_CACHE_KB / ULCC_CACHE_ASSOC / ULCC_PAGE_KB)
 
 #endif
