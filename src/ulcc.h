@@ -59,11 +59,13 @@
 
 /* Page alignment macros
  */
+// 所在页的下一页的首地址
 #define ULCC_ALIGN_HIGHER(addr) \
 		(((addr) & ULCC_PAGE_OFFSET_MASK) ?\
 		(((addr) & ULCC_PAGE_IDX_MASK) + ULCC_PAGE_BYTES) :\
 		(addr)\
 	)
+// 所在页的首地址
 #define ULCC_ALIGN_LOWER(addr)	\
 		(((addr) & ULCC_PAGE_OFFSET_MASK) ?\
 		((addr) & ULCC_PAGE_IDX_MASK) :\
